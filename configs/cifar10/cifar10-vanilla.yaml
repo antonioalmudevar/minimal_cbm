@@ -1,0 +1,27 @@
+data:
+    dataset: cifar10
+    root: /mnt/cephfs/home/voz/shared/database/cifar10
+    n_concepts: 64
+
+model:
+    model_type: vanilla
+    encoder:
+        arch: conv2d
+        latent_dim: 256
+    hidden_dims_y: 64
+    var_z: 0
+
+training:
+    batch_size: 128
+    n_epochs: 200
+    save_epochs: 200
+    optimizer:    
+        optimizer: Adam
+        base_batch_size: 64
+        base_lr: 0.0001
+        batch_size: 128
+        weight_decay: 0.00004
+    scheduler:
+        gamma: 0.1
+        scheduler: StepLR
+        step_size: 80

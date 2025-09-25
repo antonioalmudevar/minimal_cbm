@@ -1,0 +1,33 @@
+data:
+    dataset: Shapes3D
+    filepath: /mnt/cephfs/home/voz/shared/database/disentanglement/3dshapes.h5
+    task: shape
+    concepts: [scale, object_hue]
+    nuisances_task: [floor_hue, wall_hue]
+
+model:
+    model_type: mcbm
+    encoder:
+        arch: resnet20
+    hidden_dims_y: 64
+    var_z: 1
+    hidden_dims_c: [3]
+    beta: 1
+    hidden_dims_z: null
+    gamma: 1
+
+training:
+    batch_size: 128
+    n_epochs: 50
+    save_epochs: 10
+    optimizer:    
+        optimizer: SGD
+        base_batch_size: 64
+        base_lr: 0.003
+        batch_size: 128
+        momentum: 0.9
+        weight_decay: 0.00004
+    scheduler:
+        gamma: 0.1
+        scheduler: StepLR
+        step_size: 20
